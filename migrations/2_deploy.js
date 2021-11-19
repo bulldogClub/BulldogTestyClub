@@ -1,18 +1,17 @@
-const BetaNFTImage = artifacts.require("BetaNFTImage"); 
+const BulldogTestyClub = artifacts.require("BulldogTestyClub"); 
 
-const BetaNFTImageSeason1 = artifacts.require("BetaNFTImageSeason1"); 
+const BulldogTestyClubSeason1 = artifacts.require("BulldogTestyClubSeason1"); 
 module.exports = async function(deployer,network, accounts) {
-    var nftName = "Beta NFT Image"
-    var nftSymbol = "BNI"
-    var baseURI = "https://ipfs.io/ipfs/QmUkTKJEWB9MPaBAqLxF6jSw6FGyAyhQU9Ji8ykfbanobB/"
-    var total = "50"
-    await deployer.deploy(BetaNFTImage,nftName,nftSymbol,total);
-    const monster = await BetaNFTImage.deployed();
+    var nftName = "Bulldog Testy Club"
+    var nftSymbol = "BTC"
+    var total = "1000"
+    await deployer.deploy(BulldogTestyClub,nftName,nftSymbol,total);
+    const monster = await BulldogTestyClub.deployed();
 
-    var tokenName = "Beta NFT Image Season 1"
-    var tokenSymbol = "BNIS1"
-    await deployer.deploy(BetaNFTImageSeason1,tokenName,tokenSymbol,monster.address);
-    const btcContract = await BetaNFTImageSeason1.deployed();
+    var tokenName = "Bulldog Testy Club Season 1"
+    var tokenSymbol = "BTCS1"
+    await deployer.deploy(BulldogTestyClubSeason1,tokenName,tokenSymbol,monster.address);
+    const btcContract = await BulldogTestyClubSeason1.deployed();
     
     await monster.setBtcs1(btcContract.address);
     await monster.flipSaleState();
