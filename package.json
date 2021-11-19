@@ -1,0 +1,60 @@
+{
+  "name": "bulldog-testy-club",
+  "version": "1.0.0",
+  "description": "",
+  "main": "",
+  "directories": {
+    "test": "test"
+  },
+  "dependencies": {
+    "@davidqhr/ganache-cli": "6.4.3",
+    "@openzeppelin/contracts": "3.2.0",
+    "@truffle/debug-utils": "^4.1.1",
+    "@truffle/hdwallet-provider": "^1.4.0",
+    "bip39": "^3.0.2",
+    "ethers": "^4.0.47",
+    "inquirer": "^7.1.0",
+    "truffle": "^5.4.6",
+    "solidity-docgen": "^0.5.6",
+    "web3": "^1.2.6"
+  },
+  "devDependencies": {
+    "@openzeppelin/test-environment": "^0.1.4",
+    "@openzeppelin/test-helpers": "^0.5.5",
+    "chai": "^4.2.0",
+    "eth-gas-reporter": "^0.2.17",
+    "mocha": "^7.1.2",
+    "truffle-contract-size": "^2.0.0",
+    "truffle-plugin-verify": "0.5.16",
+    "typechain": "^1.0.5",
+    "typechain-target-truffle": "1.0.2"
+  },
+  "scripts": {
+    "test": "node script/test.js",
+    "start": "lite-server",
+    "build": "npm run compile:contracts && npm run compile:types",
+    "migrate": "truffle migrate",
+    "deploy:development": "npm run build && npm run migrate -- --network development",
+    "deploy:mainnet": "npm run build && npm run migrate -- --network mainnet",
+    "deploy:ropsten": "npm run build && npm run migrate -- --network ropsten",
+    "deploy:rinkeby": "npm run build && npm run migrate -- --network rinkeby",
+    "deploy:polygon": "npm run build && npm run migrate -- --network polygon", 
+    "deploy:matic": "npm run build && npm run migrate -- --network matic",
+    "deploy:mumbai": "npm run build && npm run migrate -- --network mumbai",
+    "deploy:kovan": "npm run build && npm run migrate -- --network kovan",
+    "compile:contracts": "truffle compile",
+    "compile:types": "typechain --target=truffle --outDir build/types/truffle-types \"build/contracts/*.json\"",
+    "compile": "truffle compile",
+    "ganache": "ganache-cli -e 1000",
+    "node": "node script/0.js",
+    "mocha": "mocha --exit --recursive"
+  },
+  "mocha": {
+    "timeout": 100000,
+    "useColors": true,
+    "reporter": "spec"
+  },
+  "keywords": [],
+  "author": "Nick",
+  "license": "V1"
+}
